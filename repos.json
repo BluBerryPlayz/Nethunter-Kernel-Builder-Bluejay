@@ -1,6 +1,6 @@
 [  {
     "kernelSource": {
-      "name": "Lineage21",
+      "name": "Lineage22",
       "repo": "https://android.googlesource.com/kernel/configs/",
       "branch": "android-gs-bluejay-5.10-android15-qpr1",
       "device": "bluejay"
