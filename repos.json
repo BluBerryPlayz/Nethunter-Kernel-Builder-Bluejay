@@ -1,34 +1,33 @@
-[  {
-    "kernelSource": {
-      "name": "Lineage22",
-      "repo": "https://android.googlesource.com/kernel/configs/",
-      "branch": "android-gs-bluejay-5.10-android15-qpr1",
-      "device": "bluejay"
+{
+  "kernelSource": {
+    "name": "Google-Bluejay",
+    "repo": "https://android.googlesource.com/device/google/bluejay-kernel/",
+    "branch": "android-gs-bluejay-5.10-android14-qpr3-beta",
+    "device": "bluejay"
+  },
+  "withKernelSU": true,
+  "toolchains": [
+    {
+      "repo": "https://android.googlesource.com/platform/prebuilts/gas/linux-x86",
+      "branch": "master",
+      "name": "gas"
     },
-    "withKernelSU": true,
-    "toolchains": [
-      {
-        "repo": "https://android.googlesource.com/platform/prebuilts/gas/linux-x86",
-        "branch": "master",
-        "name": "gas"
-      },
-      {
-        "repo": "https://gitlab.com/ThankYouMario/android_prebuilts_clang-standalone/",
-        "branch": "11",
-        "name": "clang"
-      }
-    ],
-    "params": {
-      "ARCH": "arm64",
-      "CROSS_COMPILE": "aarch64-linux-gnu-",
-      "CROSS_COMPILE_ARM32": "arm-linux-gnueabi-",
-      "CROSS_COMPILE_COMPAT": "arm-linux-gnueabi-",
-      "CLANG_TRIPLE": "aarch64-linux-gnu-",
-      "AR": "",
-      "CC": "clang"
-    },
-    "extraParams": {
-      "KEEP": ""
+    {
+      "repo": "https://gitlab.com/ThankYouMario/android_prebuilts_clang-standalone/",
+      "branch": "11",
+      "name": "clang"
     }
+  ],
+  "params": {
+    "ARCH": "arm64",
+    "CROSS_COMPILE": "aarch64-linux-gnu-",
+    "CROSS_COMPILE_ARM32": "arm-linux-gnueabi-",
+    "CROSS_COMPILE_COMPAT": "arm-linux-gnueabi-",
+    "CLANG_TRIPLE": "aarch64-linux-gnu-",
+    "AR": "",
+    "CC": "clang"
+  },
+  "extraParams": {
+    "KEEP": ""
   }
-]
+}
