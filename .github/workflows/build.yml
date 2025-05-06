@@ -24,7 +24,7 @@ jobs:
           cat  ${{ env.CONFIGURATION }} >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-  Build-Kernel:
+    Build-Kernel:
     name: "🐎 Build kernel"
     runs-on: ubuntu-latest
     needs:
@@ -33,18 +33,16 @@ jobs:
       max-parallel: 2
       fail-fast: false
       matrix:
-        repos: ${{ fromJSON(needs.Set-repos.outputs.repos) }}
+        include: ${{ fromJSON(needs.Set-repos.outputs.repos) }}
     env:
-      kernelDir: ${{ matrix.repos.kernelSource.name }}_${{ matrix.repos.kernelSource.device }}
+      kernelDir: ${{ matrix.kernelSource.name }}_${{ matrix.kernelSource.device }}
+      kernelName: ${{ matrix.kernelSource.name }}
+      kernelRepo: ${{ matrix.kernelSource.repo }}
+      kernelBranch: ${{ matrix.kernelSource.branch }}
+      kernelDevice: ${{ matrix.kernelSource.device }}
+      DEFCONFIG_NAME: vendor/${{ matrix.kernelSource.device }}_defconfig
+      withKernelSU: ${{ matrix.withKernelSU }}
 
-      kernelName: ${{ matrix.repos.kernelSource.name }}
-      kernelRepo: ${{ matrix.repos.kernelSource.repo }}
-      kernelBranch: ${{ matrix.repos.kernelSource.branch }}
-      kernelDevice: ${{ matrix.repos.kernelSource.device }}
-
-      DEFCONFIG_NAME: vendor/${{ matrix.repos.kernelSource.device }}_defconfig
-
-      withKernelSU: ${{ matrix.repos.withKernelSU }}
     steps:
       - name: "✨ Create working dir"
         run: mkdir -p $kernelDir
